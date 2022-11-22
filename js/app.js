@@ -67,21 +67,21 @@ const showProductDetailsInModal = (product_details) => {
 
 const getInputValue = () => {
     const element = document.getElementById('price').innerText;
-    const converted = parseInt(element);
+    const converted = parseFloat(element);
     return converted;
 };
 
 // main price update function
 const updatePrice = (value) => {
     const convertedOldPrice = getInputValue();
-    const convertPrice = parseInt(value);
+    const convertPrice = parseFloat(value);
     const total = convertedOldPrice + convertPrice;
-    document.getElementById('price').innerText = Math.round(total);
+    document.getElementById('price').innerText = parseFloat(total);
 };
 
 // set innerText function
 const setInnerText = (id, value) => {
-    document.getElementById(id).innerText = Math.round(value);
+    document.getElementById(id).innerText = parseFloat(value).toFixed(2);
 };
 
 // update delivery charge and total Tax
@@ -100,14 +100,12 @@ const updateTaxAndCharge = () => {
         setInnerText('total-tax', priceConverted * 0.4);
     }
 };
-
 //grandTotal update function
 const updateTotal = () => {
-    const grandTotal =
-        getInputValue('price') +
-        getInputValue('delivery-charge') +
-        getInputValue('total-tax');
-    document.getElementById('total').innerText = grandTotal;
+    const deliveryCharge = parseFloat(document.getElementById('delivery-charge').innerText);
+    const totalText = parseFloat(document.getElementById('total-tax').innerText);
+    const grandTotal = getInputValue('price') + deliveryCharge + totalText;
+    document.getElementById('total').innerText = grandTotal.toFixed(2);
 };
 
 // search by category
