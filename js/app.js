@@ -29,6 +29,7 @@ const showProducts = (products) => {
       </div>
       <h3>${product.title}</h3>
       <p>Category: ${product.category}</p>
+      <p>Rating: ${product.rating.rate}  count:${product.rating.count}</p>
       <h2>Price: $ ${product.price}</h2>
       <button onclick="showProductDetails(${product.id})" id="details-btn"    data-bs-toggle="modal"
       data-bs-target="#exampleModal" class="btn btn-outline-secondary mb-2 rounded-1 mt-1">Details</button>
