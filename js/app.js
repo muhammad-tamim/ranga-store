@@ -43,10 +43,9 @@ let count = 0;
 
 const addToCart = (id, price) => {
     count = count + 1;
-    updatePrice('price', value);
-
-    updateTaxAndCharge();
     document.getElementById('total-Products').innerText = count;
+    updatePrice(price);
+    updateTaxAndCharge();
 };
 
 const showProductDetails = (product_id) => {
@@ -64,18 +63,18 @@ const showProductDetailsInModal = (product_details) => {
     setInnerText('rating', product_details.rating.rate);
 };
 
-const getInputValue = (id) => {
-    const element = document.getElementById(id).innerText;
+const getInputValue = () => {
+    const element = document.getElementById('price').innerText;
     const converted = parseInt(element);
     return converted;
 };
 
 // main price update function
-const updatePrice = (id, value) => {
-    const convertedOldPrice = getInputValue(id);
+const updatePrice = (value) => {
+    const convertedOldPrice = getInputValue();
     const convertPrice = parseInt(value);
     const total = convertedOldPrice + convertPrice;
-    document.getElementById(id).innerText = Math.round(total);
+    document.getElementById('price').innerText = Math.round(total);
 };
 
 // set innerText function
